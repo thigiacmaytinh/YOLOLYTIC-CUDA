@@ -6,30 +6,44 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C55C654B-9B9B-46BF-8ABF-4848B4D7C9C0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Yololytic</RootNamespace>
-    <AssemblyName>Yololytic</AssemblyName>
+    <RootNamespace>YoloSegment</RootNamespace>
+    <AssemblyName>YoloSegment</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;HAVE_CUDA</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <WarningLevel>5</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>..\bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;HAVE_CUDA</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -41,24 +55,6 @@
   <PropertyGroup>
     <ApplicationIcon>yolov8.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge.Video">
       <HintPath>..\packages\AForge_2.2.5.0\AForge.Video.dll</HintPath>
@@ -66,27 +62,20 @@
     <Reference Include="AForge.Video.DirectShow">
       <HintPath>..\packages\AForge_2.2.5.0\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ML.OnnxRuntime, Version=1.26.0.0, Culture=neutral, PublicKeyToken=f27f157f0a5b7bb6, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ML.OnnxRuntime.Managed.1.26.0\lib\netstandard2.0\Microsoft.ML.OnnxRuntime.dll</HintPath>
+    <Reference Include="CameraWall, Version=1.0.9789.28837, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\CameraWall.dll</HintPath>
+    </Reference>
+    <Reference Include="FFMPEG, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\FFMPEG.dll</HintPath>
     </Reference>
     <Reference Include="NAudio">
       <HintPath>..\packages\NAudio\NAudio.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
     <Reference Include="System.Core" />
-    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -96,19 +85,36 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TGMTcontrols, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\TGMTcontrols.dll</HintPath>
+    </Reference>
+    <Reference Include="YOLO_CUDA, Version=1.0.9789.29782, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\YOLO_CUDA.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\lib\TGMTcs\src\TGMTcuda.cs">
+      <Link>TGMTcs\TGMTcuda.cs</Link>
+    </Compile>
     <Compile Include="..\lib\TGMTcs\src\TGMTdraw.cs">
       <Link>TGMTcs\TGMTdraw.cs</Link>
     </Compile>
     <Compile Include="..\lib\TGMTcs\src\TGMTform.cs">
       <Link>TGMTcs\TGMTform.cs</Link>
     </Compile>
+    <Compile Include="..\lib\TGMTcs\src\TGMThardware.cs">
+      <Link>TGMTcs\TGMThardware.cs</Link>
+    </Compile>
     <Compile Include="..\lib\TGMTcs\src\TGMTimage.cs">
       <Link>TGMTcs\TGMTimage.cs</Link>
     </Compile>
     <Compile Include="..\lib\TGMTcs\src\TGMTregistry.cs">
       <Link>TGMTcs\TGMTregistry.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\TGMTcs\src\TGMTshape.cs">
+      <Link>TGMTcs\TGMTshape.cs</Link>
     </Compile>
     <Compile Include="..\lib\TGMTcs\src\TGMTsound.cs">
       <Link>TGMTcs\TGMTsound.cs</Link>
@@ -119,6 +125,7 @@
     <Compile Include="..\lib\TGMTcs\src\TGMTutil.cs">
       <Link>TGMTcs\TGMTutil.cs</Link>
     </Compile>
+    <Compile Include="EngineMgr.cs" />
     <Compile Include="FormCamera.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,12 +137,6 @@
     </Compile>
     <Compile Include="FormExtractVideo.Designer.cs">
       <DependentUpon>FormExtractVideo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormVideo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormVideo.Designer.cs">
-      <DependentUpon>FormVideo.cs</DependentUpon>
     </Compile>
     <Compile Include="FormFolder.cs">
       <SubType>Form</SubType>
@@ -155,11 +156,23 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVideo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVideo.Designer.cs">
+      <DependentUpon>FormVideo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormWebcam.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormWebcam.Designer.cs">
       <DependentUpon>FormWebcam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupRecent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupRecent.Designer.cs">
+      <DependentUpon>PopupRecent.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,9 +183,6 @@
     <EmbeddedResource Include="FormExtractVideo.resx">
       <DependentUpon>FormExtractVideo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormVideo.resx">
-      <DependentUpon>FormVideo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormFolder.resx">
       <DependentUpon>FormFolder.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,8 +192,14 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormVideo.resx">
+      <DependentUpon>FormVideo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormWebcam.resx">
       <DependentUpon>FormWebcam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupRecent.resx">
+      <DependentUpon>PopupRecent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -195,7 +211,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -210,30 +225,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\lib\TGMTcontrols\TGMTcontrols\TGMTcontrols.csproj">
-      <Project>{bc91e6cd-29e4-4292-af0c-2d27a8b93f31}</Project>
-      <Name>TGMTcontrols</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\lib\TGMTplayer\TGMTplayer_x64.csproj">
-      <Project>{9c29c989-4947-478e-90c3-a3e20a54d560}</Project>
-      <Name>TGMTplayer_x64</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\YOLOcs\YOLOcs.vcxproj">
-      <Project>{d432f6f5-d5cd-465f-a546-0a375c43750f}</Project>
-      <Name>YOLOv8_cs</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\double_select_16.png" />
     <None Include="Resources\copy16.png" />
+    <None Include="Resources\Open-file16.png" />
+    <None Include="Resources\double_select_16.png" />
+    <None Include="Resources\history_32.png" />
     <Content Include="yolov8.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.Managed.1.26.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.Managed.1.26.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.Managed.1.26.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.Managed.1.26.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets'))" />
-  </Target>
 </Project>
