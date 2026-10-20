@@ -1,0 +1,12 @@
+.vs/
+Example/obj/
+Yololytic_v8_UI/obj/
+YoloSegment_v8_UI/obj/
+packages/Microsoft.ML.OnnxRuntime.Gpu.1.26.0/
+packages/Microsoft.ML.OnnxRuntime.Gpu.Linux.1.26.0/
+packages/Microsoft.ML.OnnxRuntime.Gpu.Windows.1.26.0/
+packages/Microsoft.ML.OnnxRuntime.Managed.1.26.0/
+packages/System.Runtime.CompilerServices.Unsafe.4.5.3/
+packages/System.Numerics.Vectors.4.5.0/
+packages/System.Memory.4.5.5/
+packages/System.Buffers.4.5.1/
