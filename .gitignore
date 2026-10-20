@@ -10,3 +10,4 @@ packages/System.Runtime.CompilerServices.Unsafe.4.5.3/
 packages/System.Numerics.Vectors.4.5.0/
 packages/System.Memory.4.5.5/
 packages/System.Buffers.4.5.1/
+bin/onnxruntime_providers_cuda.dll
