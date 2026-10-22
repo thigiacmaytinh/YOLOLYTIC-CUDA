@@ -77,6 +77,8 @@ namespace Yololytic
             if (!File.Exists(txt_imagePath.Text))
                 return;
 
+            if(workerPredict.IsBusy)
+                return;
             listView1.Items.Clear();
             circle1.Visible = true;
             workerPredict.RunWorkerAsync();
