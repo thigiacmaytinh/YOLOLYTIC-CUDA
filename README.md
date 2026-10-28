@@ -2,8 +2,8 @@
 
 Phần mềm kiểm thử độ chính xác Object Detection YOLO v8. Chương trình chạy trên Windows 10 x64, có hỗ trợ CUDA.
 
-- CUDA 11.8
-- cuDNN 8.6.0
+- CUDA 12.8
+- cuDNN 9.6.0
 
 ![](image/yololytic.png)
 
@@ -26,7 +26,7 @@ Các bạn cần cài đặt:
 
 **C++ 2022 x64**: https://aka.ms/vs/17/release/vc_redist.x64.exe
 
-**.NET framework 4.6.1**: https://dotnet.microsoft.com/en-us/download/dotnet-framework/net4612
+**.NET framework 4.7.2**: https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472
 
 ## Cách convert file pt sang onnx
 
